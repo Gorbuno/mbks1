@@ -6,6 +6,7 @@ import static gorbuno.mkbs.lab1.utils.FsUtils.areFileNamesEqual;
 import java.awt.*;
 import java.io.*;
 import java.util.*;
+import java.util.stream.Stream;
 import javax.swing.*;
 
 public class FileListCellRenderer extends DefaultListCellRenderer {
@@ -31,8 +32,8 @@ public class FileListCellRenderer extends DefaultListCellRenderer {
         }
 
         File file = (File) value;
-        if (Arrays.stream(publicFiles).anyMatch(f -> areFileNamesEqual(f, file))) { // если в публичной папке есть файл с таким же именем
-            if (Arrays.stream(publicFiles).anyMatch(f -> { // если есть файл с таким же именем и содержимым
+        if (Stream.of(publicFiles).anyMatch(f -> areFileNamesEqual(f, file))) { // если в публичной папке есть файл с таким же именем
+            if (Stream.of(publicFiles).anyMatch(f -> { // если есть файл с таким же именем и содержимым
                 try {
                     return areFileNamesAndContentEqual(f, file);
                 } catch (IOException ex) {

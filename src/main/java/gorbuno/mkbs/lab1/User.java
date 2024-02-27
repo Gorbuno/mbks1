@@ -11,7 +11,7 @@ public class User {
 
         if (!privateFolder.exists() || !publicFolder.exists()) { // если одна их папок не существует то не запустится
             System.out.println("Enter correct folders on startup!");
-            System.exit(0);
+            return;
         }
 
         new FilePublisher("Публикатор", privateFolder, publicFolder); // если все ок то запускаем окошко
